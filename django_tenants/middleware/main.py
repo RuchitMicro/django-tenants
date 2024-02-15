@@ -109,6 +109,11 @@ class TenantUrlMainMiddleware(MiddlewareMixin):
         return domain.tenant
 
     def process_request(self, request):
+
+        # Ignore Url checking for static url 
+        if request.path.startswith('/static/'):
+            return
+
         connection.set_schema_to_public()
         try:
             tenant_id = self.tenant_id_from_request_path(request)
