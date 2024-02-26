@@ -114,6 +114,10 @@ class TenantUrlMainMiddleware(MiddlewareMixin):
         if request.path.startswith('/static/'):
             return
 
+        # Ignore Url checking if it contains uzumymw 
+        if 'uzumymw' in request.path:
+            return
+
         connection.set_schema_to_public()
         try:
             tenant_id = self.tenant_id_from_request_path(request)
