@@ -10,6 +10,10 @@ from django_tenants.utils import remove_www, get_public_schema_name, get_tenant_
 
 from public.models import Tenant
 
+
+
+
+
 class TenantMainMiddleware(MiddlewareMixin):
     TENANT_NOT_FOUND_EXCEPTION = Http404
     """
